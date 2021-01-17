@@ -1,24 +1,18 @@
 from django.shortcuts import render,HttpResponse
-
+from .models import ToDo
 
 def homepage(request):
-    return HttpResponse("hello World")
+    return HttpResponse("hello World",)
 
 def test(request):
-    return render(request,"test.html")
+    todo_list = ToDo.objects.all()
+    return render(request,"test.html",{"todo_list":todo_list})
 
-def go(request):
-    return HttpResponse("This is my first page.")    
+def tester(request):
+    return render(request,"tester.html")
 
+def tester1(request):
+    return render(request,"tester1.html")
 
-def fizz_buzz(request,a=15): 
-    if a % 3 == 0 and a % 5 == 0:
-       return HttpResponse("«FizzBuzz»")
-    elif a % 5 == 0:
-        return HttpResponse("<<Buzz>>")
-    elif a % 3 == 0:
-        return HttpResponse("«Fizz»")  
-    else:
-        return a     
-
-    
+def tester2(request):
+    return render(request,"tester2.html")    
