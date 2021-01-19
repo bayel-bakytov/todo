@@ -19,6 +19,19 @@ def books(request):
     books_list = Books.objects.all()
     return render(request,"books.html",{"books_list":books_list})    
 
+def add_book(request):
+    form = request.POST
+    text = form["todo_text"]
+    todo = Books(text=text)
+    todo.save()
+    return redirect(books)
+
+def delete_todo(request,id):
+    todo = ToDo.objects.get(id=id)
+    todo.delete()
+    return redirect(test)
+
+
 def tester(request):
     return render(request,"tester.html")
 
