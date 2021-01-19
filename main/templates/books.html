@@ -11,11 +11,10 @@
 </head>
 
 <body>
-
     <section>
 
         <div class="create_conteiner">
-            <form action="{%url 'add-todo' %}" method="POST">
+            <form action="{%url 'add-book' %}" method="POST">
                 {% csrf_token %}
                 <!-- for security   -->
                 <input class="create_input" name="todo_text" type="text" placeholder="Напишите сюда новую задачу">
@@ -26,38 +25,19 @@
 
         <div class="todo_conteiner">
             {% for todo in todo_list %}
-            <div class="items 
-            {% if todo.is_favorite %}
-              marked
-            {% elif todo.is_closed %}
-              done
-            {% endif %}
-            ">
+            <div class="items">
                 <div class="item_head">
                     <label class="container">
-                        <input {% if todo.is_closed %} checked {% endif %} class="checkbox" type="checkbox">
+                        <input class="checkbox" type="checkbox">
                         <span class="checkmark"></span>
                     </label>
-                    <h4><a href="{% url 'close-todo' todo.id %}">{{todo.text}}</a></h4>
+                    <h4>{{todo.author}}</h4>
                 </div>
                 <div class="item_footer">
-                    <p>{{todo.created_at}}</p>
+                    <p>{{todo.year}}</p>
                     <div class="act_btn">
-
-                        {% if todo.is_favorite %}
-                        <a href="{% url 'unmark-todo' todo.id  %}"> <img src="{% static './img/marked.png'%}"
-                                alt=""></a>
-                        {% else %}
-
-                        <a href="{% url 'mark-todo' todo.id  %}"> <img src="{% static './img/star.png'%}" alt=""></a>
-
-                        {%endif%}
-
-                        <a href="{% url 'delete_todo'  todo.id %}"><img src="{% static './img/delete.png' %}" alt="">
-                        </a>
-
-
-
+                        <img src="{% static './img/delete.png' %}" alt="">
+                        <img src="{% static './img/star.png'%}" alt="">
                     </div>
                 </div>
             </div>

@@ -89,6 +89,9 @@ section {
   font-size: 18px;
   font-family: sans-serif;
 }
+.item_head h4 a {
+  text-decoration: none;
+}
 .item_footer p {
   font-size: 15px;
   font-family: sans-serif;
