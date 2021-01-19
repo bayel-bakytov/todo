@@ -31,12 +31,16 @@ def delete_todo(request,id):
     todo.delete()
     return redirect(test)
 
+def mark_todo(request,id):
+     todo = ToDo.objects.get(id=id)
+     todo.is_favorite = True 
+     todo.save() 
+     return redirect(test)
 
-def tester(request):
-    return render(request,"tester.html")
+def unmark_todo(request,id):
+     todo = ToDo.objects.get(id=id)
+     todo.is_favorite = False 
+     todo.save() 
+     return redirect(test)
 
-def tester1(request):
-    return render(request,"tester1.html")
 
-def tester2(request):
-    return render(request,"tester2.html")    
